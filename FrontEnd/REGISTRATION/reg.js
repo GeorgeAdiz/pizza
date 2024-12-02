@@ -3,9 +3,7 @@
 // Get form and input elements
 const form = document.getElementById('register-form');
 const usernameInput = document.getElementById('username');
-const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
-const confirmPasswordInput = document.getElementById('confirm-password');
 
 // Event listener for form submission
 form.addEventListener('submit', async (e) => {
@@ -13,24 +11,16 @@ form.addEventListener('submit', async (e) => {
 
     // Get input values
     const username = usernameInput.value.trim();
-    const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
-    const confirmPassword = confirmPasswordInput.value.trim();
 
     // Validate form fields
-    if (!username || !email || !password || !confirmPassword) {
+    if (!username ||  !password ) {
         alert('All fields are required!');
         return;
     }
 
-    // Check if passwords match
-    if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-    }
-
     // Prepare data to be sent to the backend
-    const userData = { username, email, password, confirmPassword };
+    const userData = { username,  password, };
 
     try {
         // Send a POST request to the backend API
