@@ -1,20 +1,29 @@
-const mongoose = require('mongoose')
+// models/ordermodel.js
+const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema
-
-const orderSchema = new Schema({
-    PizzaName:{
+const orderSchema = new mongoose.Schema({
+    fullname: {
         type: String,
-        required: true
+        required: true,
     },
-    Quantity: {
-        type: Number,
-        required: true
+    contactNumber: {
+        type: String,
+        required: true,
     },
-    TotalAmount: {
+    quantity: {
         type: Number,
-        required: true
-    }
-}, { timestamps: true})
+        required: true,
+    },
+    pizzaFlavor: {
+        type: String,
+        required: true,
+    },
+    orderDate: {
+        type: Date,
+        default: Date.now,
+    },
+});
 
-module.exports = mongoose.model('Order', orderSchema)
+const Order = mongoose.model('Order', orderSchema);
+
+module.exports = Order;
